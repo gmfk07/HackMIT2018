@@ -15,7 +15,7 @@ socketio = SocketIO(app)
 current_lobbies = set()
 players_in_lobbies = {}
 
-@socketio.on('join', namespace='/game')
+@socketio.on('join')
 def on_join(rm):
     if rm in current_lobbies:
         join_room(rm)
@@ -24,21 +24,21 @@ def on_join(rm):
     else:
         emit('join failed', {'data': 'Room does not exist'})
 
-@socketio.on('leave', namespace='/game')
+@socketio.on('leave')
 def on_leave(rm):
     room = rm
     leave_room(room)
     
-@socketio.on('connect', namespace='/game')
+@socketio.on('connect')
 def test_connect():
     emit('connect response', {'data': 'Connected'})
     print('Client connected')
 
-@socketio.on('disconnect', namespace='/game')
+@socketio.on('disconnect')
 def test_disconnect():
     print('Client disconnected')
     
-@socketio.on('game', namespace='/game')
+@socketio.on('game')
 def new_game(message):
     code = generate_code()
     current_lobbies.add(code)

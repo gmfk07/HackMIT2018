@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import io from 'socket.io-client';
 
-const socket = io('http://localhost:5000/game', {reconnect: true});
+const socket = io('http://localhost:5000', {reconnect: true});
 
 class Controller extends React.Component {
   constructor(props) {
