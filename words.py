@@ -7,7 +7,7 @@ Created on Sat Sep 15 12:47:30 2018
 
 adjective_set = {"required", "scientific", "sufficient", "advanced", 
                   "ultimate", "unlimited", "dope", "sick", "cool", "radical",
-                  "unknown", "awesome", "sad"}
+                  "unknown", "awesome", "sad", "shaved"}
 noun_set = {"bottle", "pen", "pineapple", "apple", "chair", "president",
-              "panty", "hose", "pantyhose", "game", "time", "existence",
-              "ball"}
+              "pants", "hose", "pantyhose", "game", "time", "existence",
+              "sphere", "wallaby", "dingo", "duck", "lucy"}
