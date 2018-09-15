@@ -145,7 +145,8 @@ class EnterCode extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    socket.emit('join', {"room": this.state.roomCode, "name": this.state.name});
+    if (this.state.name != "" && this.state.name.length <= 24)
+      socket.emit('join', {"room": this.state.roomCode, "name": this.state.name});
   }
 
   render()

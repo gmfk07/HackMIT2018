@@ -24,7 +24,7 @@ def on_join(data):
         players_in_lobbies[rm] += 1
         player_names[request.sid] = data["name"]
         emit('join response', {'name': data['name']})
-        emit('player join', data["name"], room=session.get("room") + " GAME")
+        emit('player join', data["name"], room=data["room"] + " GAME")
     else:
         emit('join failed', {'data': 'Room does not exist'})
 
@@ -42,8 +42,7 @@ def test_connect():
 @socketio.on('disconnect')
 def test_disconnect():
     leave_room(session.get("room"))
-    if(session.get("room") != None):
-        emit('player leave', 'E', room=session.get("room") + " GAME")
+    emit('player leave', 'E', room=session.get("room") + " GAME")
     print('Client disconnected')
     
 @socketio.on('button press')
