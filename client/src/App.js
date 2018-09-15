@@ -12,8 +12,20 @@ class Controller extends React.Component {
     socket.emit('join', 'main');
   }
 
-  handleClick() {
-    alert("hi");
+  handleClickCL1() {
+    alert("green button clicked");
+  }
+
+  handleClickCR1() {
+    alert("blue button clicked");
+  }
+
+  handleClickCL2() {
+    alert("yellow button clicked");
+  }
+
+  handleClickCR2() {
+    alert("red button clicked");
   }
 
   render()
@@ -47,12 +59,12 @@ class Controller extends React.Component {
   </div>
   <div class="controllerRight">
     <div class="backButton1Center">
-      <div class= "cornerLeft1" onClick={this.handleClick}></div>
-      <div class= "cornerRight1"></div>
+      <div class= "cornerLeft1" onClick={this.handleClickCL1}></div>
+      <div class= "cornerRight1" onClick={this.handleClickCR1}></div>
     </div>
     <div class="backButton2Center">
-      <div class= "cornerLeft2"></div>
-      <div class= "cornerRight2"></div>
+      <div class= "cornerLeft2" onClick={this.handleClickCL2}></div>
+      <div class= "cornerRight2" onClick={this.handleClickCR2}></div>
     </div>
   </div>
 </div>
