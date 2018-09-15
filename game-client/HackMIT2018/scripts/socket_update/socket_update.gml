@@ -3,6 +3,11 @@
 // Get the latest queue
 var queue = socket_get_queue();
 
+if (!ds_exists(queue, ds_type_list)) {
+	log_debug("Queue is not loading properly");
+	return;
+}
+
 // Store the size of the queue
 var queue_size = ds_list_size(queue);
 

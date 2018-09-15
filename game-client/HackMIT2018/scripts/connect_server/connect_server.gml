@@ -3,7 +3,7 @@
 var serverIp = argument0;
 var serverPort = argument1;
 socket_connect(serverIp, serverPort);
-socket_add_listener("new game", listener_newgame);
+socket_add_listener("connect response", listener_connectresponse);
 with (obj_network) {
-	alarm[0] = updateTime;	
+	alarm[0] = 1;	
 }
