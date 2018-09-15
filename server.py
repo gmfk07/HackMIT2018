@@ -46,13 +46,13 @@ def test_disconnect():
 @socketio.on('button press')
 def button_press(button):
     player_num = players_to_nums[request.sid]
-    emit('button press', {'player': player_num, 'button': button}, room=session.get("room") + " GAME")
+    emit('button press', player_num + "|" + button, room=session.get("room") + " GAME")
     
 @socketio.on('joystick')
 def joystick(data):
     player_num = players_to_nums[request.sid]
-    emit('joystick', {'player': player_num, 'angle': data['angle'],
-                      'dist': data['dist']}, room=session.get("room") + " GAME")
+    emit('joystick', str(player_num) + "|" + str(data['angle']) + "|" + \
+         str(data['dist']), room=session.get("room") + " GAME")
     
 @socketio.on('game')
 def new_game(message):

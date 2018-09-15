@@ -7,7 +7,7 @@ import JoyStick from 'react-joystick';
 
 const socket = io('http://localhost:5000', {reconnect: true});
 
- 
+
 const joyOptions = {
     mode: 'dynamic',
     catchDistance: 125,
@@ -15,7 +15,7 @@ const joyOptions = {
     zone: document.getElementById('controllerLeft'),
     position: {left: '50%', top: '50%'}
 }
- 
+
 const containerStyle = {
     position: 'relative',
     height: '250px',
@@ -23,14 +23,14 @@ const containerStyle = {
     backgroundColor: '#E6E6E6',
     borderRadius: '100%'
 }
- 
- 
+
+
 class JoyWrapper extends Component {
     constructor() {
         super();
         this.managerListener = this.managerListener.bind(this);
     }
- 
+
     managerListener(manager) {
         manager.on('move', (e, stick) => {
             console.log(stick);
@@ -39,7 +39,7 @@ class JoyWrapper extends Component {
             console.log('I ended!')
         })
     }
- 
+
     render() {
         const { classes } = this.props;
         return (
@@ -47,7 +47,7 @@ class JoyWrapper extends Component {
                 <JoyStick joyOptions={joyOptions} containerStyle={containerStyle} managerListener={this.managerListener} />
             </div>
         )
-    
+
     }
 }
 
@@ -58,19 +58,19 @@ class Controller extends React.Component {
   }
 
   handleClickCL1() {
-    alert("green button clicked");
+    socket.emit('button', 'green');
   }
 
   handleClickCR1() {
-    alert("blue button clicked");
+    socket.emit('button', 'blue');
   }
 
   handleClickCL2() {
-    alert("yellow button clicked");
+    socket.emit('button', 'yellow');
   }
 
   handleClickCR2() {
-    alert("red button clicked");
+    socket.emit('button', 'red');
   }
 
   render()
@@ -81,8 +81,8 @@ class Controller extends React.Component {
 <div class="controller">
 
   <div class="centerBlue">
-    <div class="centerLeft"></div>   
-    <div class="centerRight"></div>  
+    <div class="centerLeft"></div>
+    <div class="centerRight"></div>
   </div>
   <div class="centerStart">
     <div class="SLeft"></div>
@@ -92,7 +92,7 @@ class Controller extends React.Component {
     <div class="SLeft"></div>
     <div class="SRight"></div>
   </div>
- 
+
   <div class="controllerLeft">
     <JoyWrapper/>
   </div>
@@ -107,7 +107,7 @@ class Controller extends React.Component {
     </div>
   </div>
 </div>
-</div> 
+</div>
     );
   }
 }
