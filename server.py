@@ -5,7 +5,7 @@ Created on Sat Sep 15 11:26:48 2018
 @author: gmfk07
 """
 
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, session
 from flask_socketio import SocketIO, join_room, leave_room, emit
 from words import adjective_set, noun_set
 import random
@@ -14,13 +14,16 @@ app = Flask(__name__)
 socketio = SocketIO(app)
 current_lobbies = set()
 players_in_lobbies = {}
+players_to_nums = {}
 
 @socketio.on('join')
 def on_join(rm):
     if rm in current_lobbies:
         join_room(rm)
-        players_in_lobbies[rm] += 1
-        emit('join response', {'data': 'Joined'})
+        player_num = players_in_lobbies[rm] + 1
+        players_in_lobbies[rm] = player_num
+        players_to_nums[request.sid] = player_num
+        emit('join response', {'data': player_num})
     else:
         emit('join failed', {'data': 'Room does not exist'})
 
@@ -28,6 +31,7 @@ def on_join(rm):
 def on_leave(rm):
     room = rm
     leave_room(room)
+    del players_to_nums[request.sid]
     
 @socketio.on('connect')
 def test_connect():
@@ -37,6 +41,17 @@ def test_connect():
 @socketio.on('disconnect')
 def test_disconnect():
     print('Client disconnected')
+    
+@socketio.on('button press')
+def button_press(button):
+    player_num = players_to_nums[request.sid]
+    emit('button press', {'player': player_num, 'button': button}, room=session.get("room") + " GAME")
+    
+@socketio.on('joystick')
+def joystick(data):
+    player_num = players_to_nums[request.sid]
+    emit('joystick', {'player': player_num, 'angle': data['angle'],
+                      'dist': data['dist']}, room=session.get("room") + " GAME")
     
 @socketio.on('game')
 def new_game(message):
