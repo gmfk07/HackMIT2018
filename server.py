@@ -24,6 +24,7 @@ def on_join(rm):
         players_in_lobbies[rm] = player_num
         players_to_nums[request.sid] = player_num
         emit('join response', {'data': player_num})
+        emit('player join', {'player': player_num})
     else:
         emit('join failed', {'data': 'Room does not exist'})
 
