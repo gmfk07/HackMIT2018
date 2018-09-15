@@ -59,7 +59,7 @@ def new_game(message):
     code = generate_code()
     current_lobbies.add(code)
     players_in_lobbies[code] = 0
-    emit('new game', {"code": code})
+    emit('new game', code)
     room = code + " GAME"
     join_room(room)
 
