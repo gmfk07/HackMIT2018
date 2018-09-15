@@ -42,7 +42,8 @@ def test_connect():
 @socketio.on('disconnect')
 def test_disconnect():
     leave_room(session.get("room"))
-    emit('player leave', 'E', room=session.get("room") + " GAME")
+    if(session.get("room") != None):
+        emit('player leave', 'E', room=session.get("room") + " GAME")
     print('Client disconnected')
     
 @socketio.on('button press')
