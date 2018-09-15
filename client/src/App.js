@@ -24,6 +24,11 @@ const containerStyle = {
     borderRadius: '100%'
 }
 
+class LobbyScreen extends Component {
+  render() {
+    return ("You're in! Waiting for game start...");
+  }
+}
 
 class JoyWrapper extends Component {
     constructor() {
@@ -115,8 +120,9 @@ class Controller extends React.Component {
 class EnterCode extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {roomCode: ""};
-    this.handleChange = this.handleChange.bind(this);
+    this.state = {roomCode: "", name: ""};
+    this.handleRoomChange = this.handleRoomChange.bind(this);
+    this.handleNameChange = this.handleNameChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -129,13 +135,17 @@ class EnterCode extends React.Component {
     });
   }
 
-  handleChange(e) {
+  handleRoomChange(e) {
     this.setState({roomCode: e.target.value});
+  }
+
+  handleNameChange(e) {
+    this.setState({name: e.target.value});
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    socket.emit('join', this.state.roomCode);
+    socket.emit('join', {"room": this.state.roomCode, "name": this.state.name});
   }
 
   render()
@@ -143,8 +153,11 @@ class EnterCode extends React.Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <label>
+          Name:
+          <input type="text" value={this.state.name} onChange={this.handleNameChange} />
+          <br/>
           Room Code:
-          <input type="text" value={this.state.roomCode} onChange={this.handleChange} />
+          <input type="text" value={this.state.roomCode} onChange={this.handleRoomChange} />
         </label>
         <input type="submit" value="Submit" onClick={this.handleSubmit} />
       </form>
@@ -168,7 +181,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {this.state.inGame ? <Controller/>:<EnterCode startGame={this.startGame}/>}
+        {this.state.inGame ? <LobbyScreen/>:<EnterCode startGame={this.startGame}/>}
       </div>
     );
   }

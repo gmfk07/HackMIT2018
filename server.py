@@ -14,17 +14,17 @@ app = Flask(__name__)
 socketio = SocketIO(app)
 current_lobbies = set()
 players_in_lobbies = {}
-players_to_nums = {}
+player_names = {}
 
 @socketio.on('join')
-def on_join(rm):
-    if rm in current_lobbies:
+def on_join(data):
+    if data["room"] in current_lobbies:
+        rm = data["room"]
         join_room(rm)
-        player_num = players_in_lobbies[rm] + 1
-        players_in_lobbies[rm] = player_num
-        players_to_nums[request.sid] = player_num
-        emit('join response', {'data': player_num})
-        emit('player join', player_num, room=session.get("room") + " GAME")
+        players_in_lobbies[rm] += 1
+        player_names[request.sid] = data["name"]
+        emit('join response', {'name': data['name']})
+        emit('player join', data["name"], room=session.get("room") + " GAME")
     else:
         emit('join failed', {'data': 'Room does not exist'})
 
@@ -32,7 +32,7 @@ def on_join(rm):
 def on_leave(rm):
     room = rm
     leave_room(room)
-    del players_to_nums[request.sid]
+    del player_names[request.sid]
     
 @socketio.on('connect')
 def test_connect():
@@ -47,13 +47,13 @@ def test_disconnect():
     
 @socketio.on('button press')
 def button_press(button):
-    player_num = players_to_nums[request.sid]
-    emit('button press', player_num + "|" + button, room=session.get("room") + " GAME")
+    player_name = player_names[request.sid]
+    emit('button press', player_name + "|" + button, room=session.get("room") + " GAME")
     
 @socketio.on('joystick')
 def joystick(data):
-    player_num = players_to_nums[request.sid]
-    emit('joystick', str(player_num) + "|" + str(data['angle']) + "|" + \
+    player_name = player_names[request.sid]
+    emit('joystick', player_name + "|" + str(data['angle']) + "|" + \
          str(data['dist']), room=session.get("room") + " GAME")
     
 @socketio.on('game')
