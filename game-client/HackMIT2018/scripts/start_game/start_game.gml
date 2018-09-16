@@ -4,9 +4,6 @@ var playerName = ds_map_find_first(global.playerMap);
 var playerInfoMap = global.playerMap[? playerName];
 var i = 0;
 while (!is_undefined(playerInfoMap)) {
-	with (playerInfoMap[?"inputInst"]) {
-			
-	}
 	
 	//Setup for next loop
 	playerName = ds_map_find_next(global.playerMap, playerName);
@@ -14,6 +11,8 @@ while (!is_undefined(playerInfoMap)) {
 	i++;	
 }
 
+socket_add_listener("button press", listener_playerbutton);
+socket_add_listener("joystick", listener_playerjoystick);
 
 
 room_goto(rm_game);
