@@ -13,6 +13,7 @@ while (!is_undefined(playerInfoMap)) {
 	var inst = instance_create_depth(spawn.x, spawn.y, 0, obj_racer);
 	var input = playerInfoMap[?"inputInst"];
 	input.playerInst = inst;
+	inst.name = playerName;
 	
 	//Setup for next loop
 	playerName = ds_map_find_next(global.playerMap, playerName);

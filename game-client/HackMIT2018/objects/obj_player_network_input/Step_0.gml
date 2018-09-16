@@ -41,9 +41,9 @@ if (room == rm_stoplight) {
 		var mag = point_distance_3d(0, 0, 0, other.gyroX, other.gyroY, other.gyroZ);
 	
 		if (mag > min_accel) {
-			vspeed -= 0.02;
+			vspeed -= 0.03;
 		} else {
-			vspeed += 0.15;
+			vspeed += 0.35;
 		}
 		vspeed = clamp(vspeed, -max_speed, 0);
 	}
