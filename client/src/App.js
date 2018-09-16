@@ -71,12 +71,23 @@ class JoyWrapper extends Component {
 class Controller extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {movementCanEmit: true};
+    this.allowMovementEmit = this.allowMovementEmit.bind(this);
+  }
+
+  allowMovementEmit() {
+    this.setState({movementCanEmit: true});
   }
 
   componentDidMount() {
     window.addEventListener('devicemotion', function(event) {
-      socket.emit('device acceleration', {'x': event.acceleration.x,
-      'y': event.acceleration.y, 'z': event.acceleration.z});
+      if (this.state.movementCanEmit)
+      {
+        socket.emit('device acceleration', {'x': event.acceleration.x,
+        'y': event.acceleration.y, 'z': event.acceleration.z});
+        this.setState({movementCanEmit: false});
+        setTimeout(this.allowMovementEmit, 30);
+      }
     });
   }
 
