@@ -80,6 +80,10 @@ def game_start(message):
     if (rooms()[1][-4:] == "GAME"):
         emit('game start', 'E', room=rooms()[1][:-5])
 
+@app.route("/")
+def index():
+    return "Hello World!"
+
 def post(data, code=200):
     resp = jsonify(data)
     resp.status_code = code
