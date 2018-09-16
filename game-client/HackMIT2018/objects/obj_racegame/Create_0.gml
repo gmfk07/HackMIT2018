@@ -1,5 +1,6 @@
-/// @description Maze Spawning
+/// @description Race Spawning
 
+socket_add_listener("device acceleration", listener_playeracceleration);
 
 var spawns = instance_number(obj_player_spawn);
 
@@ -9,7 +10,7 @@ var i = 0;
 while (!is_undefined(playerInfoMap)) {
 	
 	var spawn = instance_find(obj_player_spawn, i % spawns);
-	var inst = instance_create_depth(spawn.x, spawn.y, 0, obj_player);
+	var inst = instance_create_depth(spawn.x, spawn.y, 0, obj_racer);
 	var input = playerInfoMap[?"inputInst"];
 	input.playerInst = inst;
 	
