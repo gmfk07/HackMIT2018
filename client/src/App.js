@@ -33,18 +33,30 @@ class LobbyScreen extends Component {
 class JoyWrapper extends Component {
     constructor() {
         super();
+        this.state = {stickCanEmit: true};
         this.managerListener = this.managerListener.bind(this);
+        this.allowStickEmit = this.allowStickEmit.bind(this);
     }
 
     managerListener(manager) {
         manager.on('move', (e, stick) => {
+          if (stickCanEmit)
+          {
             console.log(stick);
             socket.emit('joystick', {'angle': Math.round(stick.angle.degree), 'distance': Math.round(stick.distance)});
+            this.setState(stickCanEmit, false);
+            setTimeout(allowStickEmit, 150);
+
+          }
         })
         manager.on('end', () => {
             console.log('I ended!')
             socket.emit('joystick', {'angle': 0, 'distance': 0})
         })
+    }
+
+    allowStickEmit() {
+      this.setState({stickCanEmit: true});
     }
 
     render() {
