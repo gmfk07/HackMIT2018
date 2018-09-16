@@ -15,6 +15,7 @@ while (!is_undefined(playerInfoMap)) {
 
 socket_add_listener("button press", listener_playerbutton);
 socket_add_listener("joystick", listener_playerjoystick);
+socket_add_listener("device acceleration", listener_playeracceleration);
 
 
 room_goto(rm_mazegame);
