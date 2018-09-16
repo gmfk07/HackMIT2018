@@ -133,9 +133,6 @@ class EnterCode extends React.Component {
   }
 
   componentDidMount() {
-    socket.on('join response', (payload) => {
-      this.props.advanceGame();
-    });
     socket.on('connect response', function(socket) {
       console.log('Connected!');
     });
@@ -188,6 +185,9 @@ class App extends Component {
     socket.on('game closed', (payload) => {
       window.location.reload();
     });
+    socket.on('join response', (payload) => {
+      this.advanceGame();
+    });
   }
 
   advanceGame()
@@ -197,12 +197,11 @@ class App extends Component {
 
   render() {
     var stage = this.state.stage;
-    var advanceGame = this.state.advanceGame
     function getComponent()
     {
       switch (stage)
       {
-        case 0: return <EnterCode advanceGame={advanceGame}/>; break;
+        case 0: return <EnterCode/>; break;
         case 1: return <LobbyScreen/>; break;
         case 2: return <Controller/>; break;
       }
