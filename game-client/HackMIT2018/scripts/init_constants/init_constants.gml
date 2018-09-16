@@ -5,3 +5,7 @@
 
 
 global.colors = [c_red, c_green, c_yellow, c_fuchsia];
+
+enum Buttons {
+	Red, Yellow, Blue, Green	
+}
