@@ -6,14 +6,12 @@ Created on Sat Sep 15 11:26:48 2018
 """
 
 from flask import Flask, request, jsonify, session
-from flask_socketio import SocketIO, join_room, leave_room, emit, socket
-from flask_session import Session
+from flask_socketio import SocketIO, join_room, leave_room, emit, rooms
 from words import adjective_set, noun_set
 import random
 
 app = Flask(__name__)
-Session(app)
-socketio = SocketIO(app, manage_session = False)
+socketio = SocketIO(app)
 current_lobbies = set()
 players_in_lobbies = {}
 player_names = {}
@@ -43,23 +41,23 @@ def test_connect():
 
 @socketio.on('disconnect')
 def test_disconnect():
-    if (socket.rooms[1]("room")[-4:] == "GAME"):
-        emit('game closed', 'E', room=socket.rooms[1][:-5])
+    if (rooms[1]("room")[-4:] == "GAME"):
+        emit('game closed', 'E', room=rooms[1][:-5])
     else:
-        emit('player leave', 'E', room=socket.rooms[1] + " GAME")
-        leave_room(socket.rooms[1])
+        emit('player leave', 'E', room=rooms[1] + " GAME")
+        leave_room(rooms[1])
     print('Client disconnected')
     
 @socketio.on('button press')
 def button_press(button):
     player_name = player_names[request.sid]
-    emit('button press', player_name + "|" + button, room=socket.rooms[1] + " GAME")
+    emit('button press', player_name + "|" + button, room=rooms[1] + " GAME")
     
 @socketio.on('joystick')
 def joystick(data):
     player_name = player_names[request.sid]
     emit('joystick', player_name + "|" + str(data['angle']) + "|" + \
-         str(data['dist']), room=socket.rooms[1] + " GAME")
+         str(data['dist']), room=rooms[1] + " GAME")
     
 @socketio.on('game')
 def new_game(message):
