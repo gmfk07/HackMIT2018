@@ -1,5 +1,6 @@
 ///start_game()
 
+/*
 var playerName = ds_map_find_first(global.playerMap);
 var playerInfoMap = global.playerMap[? playerName];
 var i = 0;
@@ -10,6 +11,7 @@ while (!is_undefined(playerInfoMap)) {
 	playerInfoMap = global.playerMap[? playerName];
 	i++;	
 }
+*/
 
 socket_add_listener("button press", listener_playerbutton);
 socket_add_listener("joystick", listener_playerjoystick);
