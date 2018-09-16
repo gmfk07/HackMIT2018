@@ -61,7 +61,6 @@ class JoyWrapper extends Component {
 class Controller extends React.Component {
   constructor(props) {
     super(props);
-    socket.emit('join', 'main');
   }
 
   componentDidMount() {
