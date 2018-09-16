@@ -41,7 +41,7 @@ def test_connect():
 
 @socketio.on('disconnect')
 def test_disconnect():
-    if (rooms()[1]("room")[-4:] == "GAME"):
+    if (rooms()[1][-4:] == "GAME"):
         emit('game closed', 'E', room=rooms()[1][:-5])
     else:
         emit('player leave', 'E', room=rooms()[1] + " GAME")
