@@ -41,23 +41,23 @@ def test_connect():
 
 @socketio.on('disconnect')
 def test_disconnect():
-    if (rooms[1]("room")[-4:] == "GAME"):
-        emit('game closed', 'E', room=rooms[1][:-5])
+    if (rooms()[1]("room")[-4:] == "GAME"):
+        emit('game closed', 'E', room=rooms()[1][:-5])
     else:
-        emit('player leave', 'E', room=rooms[1] + " GAME")
-        leave_room(rooms[1])
+        emit('player leave', 'E', room=rooms()[1] + " GAME")
+        leave_room(rooms()[1])
     print('Client disconnected')
     
 @socketio.on('button press')
 def button_press(button):
     player_name = player_names[request.sid]
-    emit('button press', player_name + "|" + button, room=rooms[1] + " GAME")
+    emit('button press', player_name + "|" + button, room=rooms()[1] + " GAME")
     
 @socketio.on('joystick')
 def joystick(data):
     player_name = player_names[request.sid]
     emit('joystick', player_name + "|" + str(data['angle']) + "|" + \
-         str(data['dist']), room=rooms[1] + " GAME")
+         str(data['dist']), room=rooms()[1] + " GAME")
     
 @socketio.on('game')
 def new_game(message):
@@ -71,7 +71,7 @@ def new_game(message):
 @socketio.on('game start')
 def game_start(message):
     if (rooms()[1][-4:] == "GAME"):
-        emit('game start', 'E', room=rooms[1][:-5])
+        emit('game start', 'E', room=rooms()[1][:-5])
 
 def post(data, code=200):
     resp = jsonify(data)
