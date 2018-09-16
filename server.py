@@ -67,7 +67,7 @@ def device_acceleration(data):
     print(str(data['y']))
     print(str(data['z']))
     emit('device acceleration', player_name + "|" + str(data['x']) + "|" + 
-         str(data['y']) + "|", str(data['z']), room=rooms()[1] + " GAME")
+         str(data['y']) + "|" + str(data['z']), room=rooms()[1] + " GAME")
     
 @socketio.on('game')
 def new_game(message):
