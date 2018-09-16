@@ -65,7 +65,8 @@ class Controller extends React.Component {
 
   componentDidMount() {
     window.addEventListener('devicemotion', function(event) {
-      console.log(event.acceleration.x + ' m/s2');
+      socket.emit('device acceleration', {'x': event.acceleration.x,
+      'y': event.acceleration.y, 'z': event.acceleration.z});
     });
   }
 
@@ -143,7 +144,7 @@ class EnterCode extends React.Component {
   }
 
   handleRoomChange(e) {
-    this.setState({roomCode: e.target.value});
+    this.setState({roomCode: e.target.value.toLowerCase()});
   }
 
   handleNameChange(e) {

@@ -60,6 +60,12 @@ def joystick(data):
     emit('joystick', player_name + "|" + str(data['angle']) + "|" + \
          str(data['distance']), room=rooms()[1] + " GAME")
     
+@socketio.on('device acceleration')
+def device_acceleration(data):
+    player_name = player_names[request.sid]
+    emit('device acceleration', player_name + "|" + str(data['x']) + "|" + 
+         str(data['y']) + "|", str(data['z']), room=rooms()[1] + " GAME")
+    
 @socketio.on('game')
 def new_game(message):
     code = generate_code()
