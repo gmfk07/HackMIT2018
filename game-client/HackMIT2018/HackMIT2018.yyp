@@ -34,7 +34,7 @@
             "Key": "01f643ed-39b9-458f-a789-fe3afc7f53e8",
             "Value": {
                 "id": "548d647c-2d97-4af0-8cc3-bc1dc243eb41",
-                "resourcePath": "rooms\\rm_game\\rm_game.yy",
+                "resourcePath": "rooms\\rm_mazegame\\rm_mazegame.yy",
                 "resourceType": "GMRoom"
             }
         },
@@ -367,6 +367,14 @@
             }
         },
         {
+            "Key": "bdeccf0a-f85e-4956-90d0-3df03de1661b",
+            "Value": {
+                "id": "1cba24e5-246e-4cb2-bbcf-af5d18e0a941",
+                "resourcePath": "objects\\obj_mazegame\\obj_mazegame.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "c73c03bd-60d0-404a-87bb-ad5a5fee110e",
             "Value": {
                 "id": "b8fea1ce-9c81-4053-afe9-50523f31316c",
@@ -388,6 +396,14 @@
                 "id": "47f71040-d4e7-425c-9923-37eb31ee491b",
                 "resourcePath": "options\\windows\\options_windows.yy",
                 "resourceType": "GMWindowsOptions"
+            }
+        },
+        {
+            "Key": "d277de02-f7d3-4e91-942e-218220184c93",
+            "Value": {
+                "id": "e9bb6645-619b-4269-9786-b038f02b13d0",
+                "resourcePath": "objects\\obj_player_spawn\\obj_player_spawn.yy",
+                "resourceType": "GMObject"
             }
         },
         {
