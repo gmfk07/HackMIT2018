@@ -11,6 +11,10 @@ with (playerInst) {
 	if (dist == 0){
 		mx = 0;
 		my = 0;
+		
+		var fric = 1;
+		hsp = approach(hsp, 0, fric);
+		vsp = approach(vsp, 0, fric);
 	} else {
 		mx /= dist;
 		my /= dist;
