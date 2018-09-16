@@ -12,4 +12,4 @@ adjective_set = {"required", "scientific", "sufficient", "advanced",
 noun_set = {"bottle", "pen", "pineapple", "apple", "chair", "president",
               "pants", "horse", "pantyhose", "play", "time", "existence",
               "sphere", "wallaby", "dingo", "duck", "lucy", "style", "motor",
-              "coffee", "irony}
+              "coffee", "irony"}
