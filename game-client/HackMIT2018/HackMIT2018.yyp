@@ -34,7 +34,7 @@
             "Key": "01f643ed-39b9-458f-a789-fe3afc7f53e8",
             "Value": {
                 "id": "548d647c-2d97-4af0-8cc3-bc1dc243eb41",
-                "resourcePath": "rooms\\rm_game\\rm_game.yy",
+                "resourcePath": "rooms\\rm_mazegame\\rm_mazegame.yy",
                 "resourceType": "GMRoom"
             }
         },
@@ -260,6 +260,14 @@
                 "id": "376a596b-b959-4775-964b-744029949119",
                 "resourcePath": "options\\html5\\options_html5.yy",
                 "resourceType": "GMHtml5Options"
+            }
+        },
+        {
+            "Key": "7aff573d-acb3-433b-b1e6-ab846bc1e791",
+            "Value": {
+                "id": "737fe244-20a1-478e-b298-1f5fb200be5f",
+                "resourcePath": "objects\\obj_mazegame\\obj_mazegame.yy",
+                "resourceType": "GMObject"
             }
         },
         {

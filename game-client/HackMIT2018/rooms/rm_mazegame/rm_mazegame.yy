@@ -1,6 +1,6 @@
 
 {
-    "name": "rm_game",
+    "name": "rm_mazegame",
     "id": "01f643ed-39b9-458f-a789-fe3afc7f53e8",
     "creationCodeFile": "",
     "inheritCode": false,
