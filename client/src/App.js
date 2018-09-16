@@ -80,13 +80,14 @@ class Controller extends React.Component {
   }
 
   componentDidMount() {
-    var canMove = this.state.movementCanEmit
+    var canMove = this.state.movementCanEmit;
+    var self = this;
     window.addEventListener('devicemotion', function(event) {
       if (canMove)
       {
         socket.emit('device acceleration', {'x': event.acceleration.x,
         'y': event.acceleration.y, 'z': event.acceleration.z});
-        this.setState({movementCanEmit: false});
+        self.setState({movementCanEmit: false});
         setTimeout(this.allowMovementEmit, 30);
       }
     });

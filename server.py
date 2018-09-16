@@ -63,9 +63,6 @@ def joystick(data):
 @socketio.on('device acceleration')
 def device_acceleration(data):
     player_name = player_names[request.sid]
-    print(str(data['x']))
-    print(str(data['y']))
-    print(str(data['z']))
     emit('device acceleration', player_name + "|" + str(data['x']) + "|" + 
          str(data['y']) + "|" + str(data['z']), room=rooms()[1] + " GAME")
     
