@@ -12,3 +12,4 @@ for (i = 0; i < 10; i++)
 alarm[0] = room_speed*3;
 
 showing = true;
+player_score = ds_map_create();

@@ -9,3 +9,4 @@ gyroY = 0;
 gyroZ = 0;
 
 playerInst = noone;
+name = "";

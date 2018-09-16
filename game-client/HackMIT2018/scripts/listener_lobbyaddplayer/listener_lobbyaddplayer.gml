@@ -12,6 +12,8 @@ playerInfo[?"inputInst"] = inputInst;
 playerInfo[?"id"] = global.playerCount;
 playerInfo[?"name"] = playerName; //reference for when looping through map
 
+inputInst.name = playerName;
+
 ds_map_add(global.playerMap, playerName, playerInfo);
 //Increase playerCount
 ++global.playerCount;
