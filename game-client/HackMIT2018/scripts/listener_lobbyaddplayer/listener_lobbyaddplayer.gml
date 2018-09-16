@@ -11,6 +11,7 @@ var playerInfo = ds_map_create();
 playerInfo[?"inputInst"] = inputInst;
 playerInfo[?"id"] = global.playerCount;
 playerInfo[?"name"] = playerName; //reference for when looping through map
+playerInfo[?"points"] = 0;
 
 inputInst.name = playerName;
 
