@@ -127,6 +127,22 @@
             }
         },
         {
+            "Key": "24612d92-9364-46bb-aaf6-6ea5060aae52",
+            "Value": {
+                "id": "67fe5a31-b8d1-4ae8-bd23-4042151fa967",
+                "resourcePath": "sprites\\spr_person4\\spr_person4.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "280bd399-3365-4a47-b9f2-405528228984",
+            "Value": {
+                "id": "51af71a6-75e7-4886-a1ae-1db9247d6871",
+                "resourcePath": "fonts\\fnt_big\\fnt_big.yy",
+                "resourceType": "GMFont"
+            }
+        },
+        {
             "Key": "29bb121b-ff89-4df1-a38a-3802c8fb6a84",
             "Value": {
                 "id": "1fbefe87-94d7-4bb3-9702-98a9650841de",
@@ -415,6 +431,14 @@
             }
         },
         {
+            "Key": "acfbeb13-06a8-40f6-962e-61b33a0f8289",
+            "Value": {
+                "id": "495cf232-b252-4b1f-bbc6-2b7dd5efd7ce",
+                "resourcePath": "sprites\\spr_person3\\spr_person3.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "ae31919f-9c12-4069-a9cd-dc4c1cc6ad30",
             "Value": {
                 "id": "f1c9e21c-7358-4ed5-b824-8905a279b14e",
@@ -500,6 +524,14 @@
                 "id": "64765898-9d0f-4f02-be08-72b823778ef4",
                 "resourcePath": "views\\c9eba532-2be2-4ff5-91ae-1c2854436776.yy",
                 "resourceType": "GMFolder"
+            }
+        },
+        {
+            "Key": "cc696888-5498-4e57-9526-7654110bf5c3",
+            "Value": {
+                "id": "6c733549-ada0-4275-a306-b46b1d45dde5",
+                "resourcePath": "sprites\\spr_person2\\spr_person2.yy",
+                "resourceType": "GMSprite"
             }
         },
         {
