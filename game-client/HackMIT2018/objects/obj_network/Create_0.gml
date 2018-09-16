@@ -6,7 +6,7 @@ serverPort = 5000;
 
 serverGame = "defaultGame";
 
-updateTime = 2;
+updateTime = 1;
 
 //name, color
 global.playerMap = ds_map_create();
