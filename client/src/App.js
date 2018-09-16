@@ -39,6 +39,8 @@ class JoyWrapper extends Component {
     managerListener(manager) {
         manager.on('move', (e, stick) => {
             console.log(stick);
+            console.log(stick.angle);
+            console.log(stick.angle.degree);
             socket.emit('joystick', {'angle': stick.angle.degree, 'distance': stick.distance});
         })
         manager.on('end', () => {
