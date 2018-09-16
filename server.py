@@ -57,7 +57,7 @@ def button_press(button):
 def joystick(data):
     player_name = player_names[request.sid]
     emit('joystick', player_name + "|" + str(data['angle']) + "|" + \
-         str(data['dist']), room=rooms()[1] + " GAME")
+         str(data['distance']), room=rooms()[1] + " GAME")
     
 @socketio.on('game')
 def new_game(message):
