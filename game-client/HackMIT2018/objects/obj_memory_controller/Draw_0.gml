@@ -15,19 +15,20 @@ if (showing)
 	}
 } else {
 	var current_player = ds_map_find_first(player_score);
-	if (ds_map_find_value(player_score, current_player)[1] == false)
+	var current_player_score = player_score[? current_player];
+	if (current_player_score[1] == false)
 		draw_set_color(c_red);
 	else
 		draw_set_color(c_black);
-	draw_text(128, room_height/2 - 26, current_player + ": " + string(ds_map_find_value(player_score, current_player)[0]));
+	draw_text(128, room_height/2 - 26, current_player + ": " + string(current_player_score[0]));
 	
 	for (i = 1; i < ds_map_size(player_score); i++)
 	{
 		current_player = ds_map_find_next(player_score, current_player);
-		if (ds_map_find_value(player_score, current_player)[1] == false)
+		if (current_player_score[1] == false)
 			draw_set_color(c_red);
 		else
 			draw_set_color(c_black);
-		draw_text(128+16*i, room_height/2 - 26, current_player + ": " + string(ds_map_find_value(player_score, current_player)[0]));
+		draw_text(128+16*i, room_height/2 - 26, current_player + ": " + string(current_player_score[0]));
 	}
 }

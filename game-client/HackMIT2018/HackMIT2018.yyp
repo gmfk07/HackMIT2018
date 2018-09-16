@@ -215,6 +215,14 @@
             }
         },
         {
+            "Key": "3f40b2fb-9fcf-4333-92b4-774b4d4b8b58",
+            "Value": {
+                "id": "b31325ab-0e0c-4aec-93a7-035af5cc0ac1",
+                "resourcePath": "objects\\obj_racegame\\obj_racegame.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "404fc476-96eb-44ff-a86f-86cbf750409f",
             "Value": {
                 "id": "ce8d71ca-0cdd-4700-943c-308003e55d82",
