@@ -63,6 +63,14 @@
             }
         },
         {
+            "Key": "0c76bb5e-38ef-4289-9d50-c5d835866afb",
+            "Value": {
+                "id": "6df3d87a-1052-4c85-bd47-48201c7662f2",
+                "resourcePath": "sprites\\spr_color\\spr_color.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "1084c7bf-9f2e-470d-ba59-3538967c1855",
             "Value": {
                 "id": "3aa8cffc-a3ac-49d2-8e2b-d99b918fbc0b",
@@ -372,6 +380,14 @@
                 "id": "79ca2009-7154-48f6-9491-308529c9a8c9",
                 "resourcePath": "scripts\\init_constants\\init_constants.yy",
                 "resourceType": "GMScript"
+            }
+        },
+        {
+            "Key": "98012a5b-fd71-4711-a3c8-f49bbcec16a8",
+            "Value": {
+                "id": "1f065958-b097-4f8d-91f6-1a7d52c436d9",
+                "resourcePath": "objects\\obj_memory_controller\\obj_memory_controller.yy",
+                "resourceType": "GMObject"
             }
         },
         {

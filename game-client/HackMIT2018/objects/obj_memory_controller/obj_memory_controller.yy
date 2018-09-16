@@ -5,13 +5,33 @@
     "name": "obj_memory_controller",
     "eventList": [
         {
-            "id": "90e18518-3a8e-4e3c-b3a6-55444981adcb",
+            "id": "149669de-5650-4858-8023-82fff6ff9bcc",
             "modelName": "GMEvent",
             "mvc": "1.0",
             "IsDnD": false,
             "collisionObjectId": "00000000-0000-0000-0000-000000000000",
             "enumb": 0,
             "eventtype": 0,
+            "m_owner": "98012a5b-fd71-4711-a3c8-f49bbcec16a8"
+        },
+        {
+            "id": "7d49a195-2e14-444f-9cd9-141220eb1dcb",
+            "modelName": "GMEvent",
+            "mvc": "1.0",
+            "IsDnD": false,
+            "collisionObjectId": "00000000-0000-0000-0000-000000000000",
+            "enumb": 0,
+            "eventtype": 2,
+            "m_owner": "98012a5b-fd71-4711-a3c8-f49bbcec16a8"
+        },
+        {
+            "id": "3e2e7d87-38b9-4774-8904-a50d80cafe1a",
+            "modelName": "GMEvent",
+            "mvc": "1.0",
+            "IsDnD": false,
+            "collisionObjectId": "00000000-0000-0000-0000-000000000000",
+            "enumb": 0,
+            "eventtype": 8,
             "m_owner": "98012a5b-fd71-4711-a3c8-f49bbcec16a8"
         }
     ],
