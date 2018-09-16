@@ -5,7 +5,7 @@ import './Controller.css';
 import io from 'socket.io-client';
 import JoyStick from 'react-joystick';
 
-const socket = io('http://localhost:5000', {reconnect: true});
+const socket = io('http://2e56dead.ngrok.io', {reconnect: true});
 
 
 const joyOptions = {
