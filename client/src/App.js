@@ -70,19 +70,19 @@ class Controller extends React.Component {
   }
 
   handleClickCL1() {
-    socket.emit('button', 'green');
+    socket.emit('button press', 'green');
   }
 
   handleClickCR1() {
-    socket.emit('button', 'blue');
+    socket.emit('button press', 'blue');
   }
 
   handleClickCL2() {
-    socket.emit('button', 'yellow');
+    socket.emit('button press', 'yellow');
   }
 
   handleClickCR2() {
-    socket.emit('button', 'red');
+    socket.emit('button press', 'red');
   }
 
   render()
