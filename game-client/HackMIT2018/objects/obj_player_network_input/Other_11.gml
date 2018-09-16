@@ -2,7 +2,8 @@
 // You can write your code in this editor
 if (instance_exists(obj_memory_controller) && !obj_memory_controller.showing)
 {
-	var current_score = ds_map_find_value(obj_memory_controller.player_score, name);
+	var current_score = obj_memory_controller.player_score[? name];
+	
 	if (current_score[1]) 
 	{
 		if (string_char_at(obj_memory_controller.pattern, current_score[0]) == "Y")

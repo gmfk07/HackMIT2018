@@ -1,5 +1,6 @@
 /// @description Get pattern, init vars
 pattern = ""
+randomize();
 for (i = 0; i < 10; i++)
 {
 	switch (irandom(3)) {
