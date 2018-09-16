@@ -44,7 +44,7 @@ class JoyWrapper extends Component {
           {
             console.log(stick);
             socket.emit('joystick', {'angle': Math.round(stick.angle.degree), 'distance': Math.round(stick.distance)});
-            this.setState({this.stickCanEmit, false});
+            this.setState({stickCanEmit, false});
             setTimeout(this.allowStickEmit, 150);
 
           }
