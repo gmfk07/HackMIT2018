@@ -196,13 +196,13 @@ class App extends Component {
   }
 
   render() {
+    var self = this;
     var stage = this.state.stage;
-    var advanceGame = this.state.advanceGame
     function getComponent()
     {
       switch (stage)
       {
-        case 0: return <EnterCode advanceGame={advanceGame}/>; break;
+        case 0: return <EnterCode advanceGame={self.advanceGame}/>; break;
         case 1: return <LobbyScreen/>; break;
         case 2: return <Controller/>; break;
       }
