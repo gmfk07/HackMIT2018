@@ -7,7 +7,6 @@ import JoyStick from 'react-joystick';
 
 const socket = io('http://2e56dead.ngrok.io', {reconnect: true});
 
-
 const joyOptions = {
     mode: 'dynamic',
     catchDistance: 125,
@@ -45,7 +44,7 @@ class JoyWrapper extends Component {
             console.log(stick);
             socket.emit('joystick', {'angle': Math.round(stick.angle.degree), 'distance': Math.round(stick.distance)});
             this.setState({stickCanEmit: false});
-            setTimeout(this.allowStickEmit, 150);
+            setTimeout(this.allowStickEmit, 60);
           }
         })
         manager.on('end', () => {
