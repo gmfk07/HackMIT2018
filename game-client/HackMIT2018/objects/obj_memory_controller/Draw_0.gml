@@ -1,4 +1,4 @@
-///@description Draw pattern if showing
+///@description Draw pattern/scores
 if (showing)
 {
 	for (i = 0; i < string_length(showing); i++)
@@ -12,5 +12,22 @@ if (showing)
 			case "B": img_index = 3; break;
 		}
 		draw_sprite(spr_color, img_index, room_width/2 + (i - 4)*32, room_height/2);
+	}
+} else {
+	var current_player = ds_map_find_first(player_score);
+	if (ds_map_find_value(player_score, current_player)[1] == false)
+		draw_set_color(c_red);
+	else
+		draw_set_color(c_black);
+	draw_text(128, room_height/2 - 26, current_player + ": " + string(ds_map_find_value(player_score, current_player)[0]));
+	
+	for (i = 1; i < ds_map_size(player_score); i++)
+	{
+		current_player = ds_map_find_next(player_score, current_player);
+		if (ds_map_find_value(player_score, current_player)[1] == false)
+			draw_set_color(c_red);
+		else
+			draw_set_color(c_black);
+		draw_text(128+16*i, room_height/2 - 26, current_player + ": " + string(ds_map_find_value(player_score, current_player)[0]));
 	}
 }

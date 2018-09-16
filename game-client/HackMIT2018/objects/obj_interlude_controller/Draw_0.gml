@@ -1,0 +1,1 @@
+///@description Draw players with their score
