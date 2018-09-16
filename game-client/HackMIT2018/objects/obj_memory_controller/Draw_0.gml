@@ -26,6 +26,7 @@ if (showing)
 	for (i = 1; i < ds_map_size(player_score); i++)
 	{
 		current_player = ds_map_find_next(player_score, current_player);
+		current_player_score = player_score[? current_player];
 		if (current_player_score[1] == false)
 			draw_set_color(c_red);
 		else
