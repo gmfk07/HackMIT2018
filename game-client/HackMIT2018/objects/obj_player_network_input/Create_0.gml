@@ -3,5 +3,3 @@
 
 stickDist = 0;
 stickDir = 0;
-
-playerObj = noone;
