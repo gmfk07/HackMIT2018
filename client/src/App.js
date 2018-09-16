@@ -40,13 +40,12 @@ class JoyWrapper extends Component {
 
     managerListener(manager) {
         manager.on('move', (e, stick) => {
-          if (this.stickCanEmit)
+          if (this.state.stickCanEmit)
           {
             console.log(stick);
             socket.emit('joystick', {'angle': Math.round(stick.angle.degree), 'distance': Math.round(stick.distance)});
             this.setState({stickCanEmit: false});
             setTimeout(this.allowStickEmit, 150);
-
           }
         })
         manager.on('end', () => {
