@@ -70,7 +70,7 @@ def new_game(message):
     
 @socketio.on('game start')
 def game_start(message):
-    if (rooms[1][-4:] == "GAME"):
+    if (rooms()[1][-4:] == "GAME"):
         emit('game start', 'E', room=rooms[1][:-5])
 
 def post(data, code=200):
