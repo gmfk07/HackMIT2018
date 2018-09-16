@@ -71,6 +71,7 @@ def new_game(message):
     
 @socketio.on('game start')
 def game_start(message):
+    print(session.get("room"))
     if (session.get("room")[-4:] == "GAME"):
         emit('game start', 'E', room=session.get("room")[:-5])
 
