@@ -62,6 +62,12 @@ class Controller extends React.Component {
     socket.emit('join', 'main');
   }
 
+  componentDidMount() {
+    window.addEventListener('devicemotion', function(event) {
+      console.log(event.acceleration.x + ' m/s2');
+    });
+  }
+
   handleClickCL1() {
     socket.emit('button', 'green');
   }
@@ -128,10 +134,13 @@ class EnterCode extends React.Component {
 
   componentDidMount() {
     socket.on('join response', (payload) => {
-      this.props.startGame();
+      this.props.advanceGame();
     });
     socket.on('connect response', function(socket) {
       console.log('Connected!');
+    });
+    window.addEventListener('devicemotion', function(event) {
+      console.log(event.acceleration.x + ' m/s2');
     });
   }
 
@@ -170,19 +179,35 @@ class App extends Component {
   constructor()
   {
     super();
-    this.state = {inGame: false}
-    this.startGame = this.startGame.bind(this);
+    this.state = {stage: 0}
+    this.advanceGame = this.advanceGame.bind(this);
   }
 
-  startGame()
+  componentDidMount()
   {
-    this.setState({inGame: true});
+    socket.on('game closed', (payload) => {
+      window.location.reload();
+    });
+  }
+
+  advanceGame()
+  {
+    this.setState({stage: this.state.stage+1});
   }
 
   render() {
+    function getComponent()
+    {
+      switch (this.state.stage)
+      {
+        case 0: return <EnterCode advanceGame={this.advanceGame}/>; break;
+        case 1: return <LobbyScreen/>; break;
+        case 2: return <Controller/>; break;
+      }
+    }
     return (
       <div className="App">
-        {this.state.inGame ? <LobbyScreen/>:<EnterCode startGame={this.startGame}/>}
+        {getComponent()}
       </div>
     );
   }

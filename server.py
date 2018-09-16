@@ -24,7 +24,7 @@ def on_join(data):
         players_in_lobbies[rm] += 1
         player_names[request.sid] = data["name"]
         emit('join response', {'name': data['name']})
-        emit('player join', data["name"], room=data["room"] + " GAME")
+        emit('player join', data["name"], room=rm + " GAME")
     else:
         emit('join failed', {'data': 'Room does not exist'})
 
@@ -41,8 +41,11 @@ def test_connect():
 
 @socketio.on('disconnect')
 def test_disconnect():
+    if (session.get("room")[-4:] == "GAME"):
+        emit('game closed', 'E', room=session.get("room")[:-5])
+    else:
+        emit('player leave', 'E', room=session.get("room") + " GAME")
     leave_room(session.get("room"))
-    emit('player leave', 'E', room=session.get("room") + " GAME")
     print('Client disconnected')
     
 @socketio.on('button press')
@@ -64,6 +67,11 @@ def new_game(message):
     emit('new game', code)
     room = code + " GAME"
     join_room(room)
+    
+@socketio.on('game start')
+def game_start(message):
+    if (session.get("room")[-4:] == "GAME"):
+        emit('game start', 'E', room=session.get("room")[:-5])
 
 def post(data, code=200):
     resp = jsonify(data)
