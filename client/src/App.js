@@ -188,6 +188,9 @@ class App extends Component {
     socket.on('join response', (payload) => {
       this.advanceGame();
     });
+    socket.on('game start', (payload) => {
+      this.advanceGame();
+    });
   }
 
   advanceGame()
