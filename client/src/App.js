@@ -80,8 +80,9 @@ class Controller extends React.Component {
   }
 
   componentDidMount() {
+    var canMove = this.state.movementCanEmit
     window.addEventListener('devicemotion', function(event) {
-      if (this.state.movementCanEmit)
+      if (canMove)
       {
         socket.emit('device acceleration', {'x': event.acceleration.x,
         'y': event.acceleration.y, 'z': event.acceleration.z});
@@ -158,9 +159,6 @@ class EnterCode extends React.Component {
   componentDidMount() {
     socket.on('connect response', function(socket) {
       console.log('Connected!');
-    });
-    window.addEventListener('devicemotion', function(event) {
-      console.log(event.acceleration.x + ' m/s2');
     });
   }
 
