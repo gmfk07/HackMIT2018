@@ -41,11 +41,12 @@ def test_connect():
 
 @socketio.on('disconnect')
 def test_disconnect():
-    if (rooms()[1][-4:] == "GAME"):
-        emit('game closed', 'E', room=rooms()[1][:-5])
-    else:
-        emit('player leave', 'E', room=rooms()[1] + " GAME")
-        leave_room(rooms()[1])
+    if (len(rooms()) > 1):
+        if (rooms()[1][-4:] == "GAME"):
+            emit('game closed', 'E', room=rooms()[1][:-5])
+        else:
+            emit('player leave', 'E', room=rooms()[1] + " GAME")
+            leave_room(rooms()[1])
     print('Client disconnected')
     
 @socketio.on('button press')
