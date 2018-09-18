@@ -14,12 +14,13 @@ if (showing)
 		draw_sprite(spr_color, img_index, room_width/2 + (i - 4)*64, room_height/2);
 	}
 } else {
+	draw_set_font(fnt_big);
 	var current_player = ds_map_find_first(player_score);
 	var current_player_score = player_score[? current_player];
 	if (current_player_score[1] == false)
 		draw_set_color(c_red);
 	else
-		draw_set_color(c_black);
+		draw_set_color(c_white);
 	draw_text(128, room_height/2 - 26, current_player + ": " + string(current_player_score[0]));
 	
 	
@@ -30,8 +31,8 @@ if (showing)
 		if (current_player_score[1] == false)
 			draw_set_color(c_red);
 		else
-			draw_set_color(c_black);
-		draw_text(128+16*i, room_height/2 - 26, current_player + ": " + string(current_player_score[0]));
+			draw_set_color(c_white);
+		draw_text(128, room_height/2 - 26+16*i, current_player + ": " + string(current_player_score[0]));
 	}
 	
 	

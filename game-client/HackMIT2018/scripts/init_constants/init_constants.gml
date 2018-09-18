@@ -1,6 +1,6 @@
 ///init_constants()
 
-
+randomize();
 
 global.playerImages = [spr_person1, spr_person2, spr_person3, spr_person4];
 
